@@ -123,4 +123,5 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'website_announcement' => env('WEBSITE_ANNOUNCEMENT', null),
 ];

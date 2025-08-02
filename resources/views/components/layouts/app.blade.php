@@ -1,6 +1,8 @@
 <x-layouts.app.header :title="$title ?? null">
     <flux:main>
-        <flux:callout variant="warning" icon="exclamation-circle" heading="Test announcement" />
+        @if (config('app.website_announcement'))
+            <flux:callout variant="warning" icon="exclamation-circle" heading="{{ config('app.website_announcement') }}" />
+        @endif
 
         {{ $slot }}
     </flux:main>
