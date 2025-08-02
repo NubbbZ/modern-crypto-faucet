@@ -123,5 +123,9 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-    'website_announcement' => env('WEBSITE_ANNOUNCEMENT', null),
+    'announcement' => [
+        'enabled' => (bool) env('ANNOUNCEMENT_ENABLED', false),
+        'type' => env('ANNOUNCEMENT_TYPE', null),
+        'message' => env('ANNOUNCEMENT_MESSAGE', null),
+    ],
 ];

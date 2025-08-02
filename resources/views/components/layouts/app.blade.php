@@ -1,7 +1,7 @@
 <x-layouts.app.header :title="$title ?? null">
     <flux:main>
-        @if (config('app.website_announcement'))
-            <flux:callout variant="warning" icon="exclamation-circle" heading="{{ config('app.website_announcement') }}" />
+        @if (config('app.announcement.enabled') && config('app.announcement.message'))
+            <flux:callout variant="{{ config('app.announcement.type') }}" icon="exclamation-circle" heading="{{ config('app.announcement.message') }}" />
         @endif
 
         {{ $slot }}
