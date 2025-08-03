@@ -1,9 +1,10 @@
 <?php
 
+use App\Wallet;
 use function Livewire\Volt\{state};
-
 $egg = "egg";
 
+$wallet = new Wallet();
 ?>
 
 <flux:header class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
@@ -25,7 +26,7 @@ $egg = "egg";
 
     <flux:navbar class="max-lg:hidden">
         <flux:tooltip content="Faucet balance!">
-            <flux:badge variant="" icon="wallet" color="green">Balance: 999999 ANI</flux:badge>
+            <flux:badge variant="" icon="wallet" color="green">Balance: {{ $wallet->getBalance() }} ANI</flux:badge>
         </flux:tooltip>
         <flux:tooltip content="Pending payouts!">
             <flux:badge variant="" icon="clock" color="yellow">Pending: {{ $egg }}</flux:badge>
