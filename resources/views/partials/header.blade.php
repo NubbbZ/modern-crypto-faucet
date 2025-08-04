@@ -1,10 +1,14 @@
 <?php
 
 use App\Wallet;
+use App\Models\Payout;
 use function Livewire\Volt\{state};
-$egg = "egg";
 
 $wallet = new Wallet();
+
+$walletBalance = $wallet->getBalance();
+$payoutQueue = Payout::where('status', 'pending')->count();
+$totalPayouts = Payout::where('status', 'completed')->sum('amount');
 ?>
 
 <flux:header class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
@@ -26,13 +30,13 @@ $wallet = new Wallet();
 
     <flux:navbar class="max-lg:hidden">
         <flux:tooltip content="Faucet balance!">
-            <flux:badge variant="" icon="wallet" color="green">Balance: {{ $wallet->getBalance() }} ANI</flux:badge>
+            <flux:badge variant="" icon="wallet" color="green">Balance: {{ $walletBalance }} ANI</flux:badge>
         </flux:tooltip>
         <flux:tooltip content="Pending payouts!">
-            <flux:badge variant="" icon="clock" color="yellow">Pending: {{ $egg }}</flux:badge>
+            <flux:badge variant="" icon="clock" color="yellow">Pending: {{ $payoutQueue }}</flux:badge>
         </flux:tooltip>
         <flux:tooltip content="Total paid out!">
-            <flux:badge variant="" icon="banknotes" color="red">Payout: 999999 ANI</flux:badge>
+            <flux:badge variant="" icon="banknotes" color="red">Payout: {{ $totalPayouts }} ANI</flux:badge>
         </flux:tooltip>
     </flux:navbar>
 </flux:header>
